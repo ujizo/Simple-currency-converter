@@ -1,7 +1,5 @@
-# Simple Currency Converter
 # 💱 Simple Currency Converter
 
-Конвертер валют на C++ с консольным интерфейсом.
 ![C++](https://img.shields.io/badge/C++-17+-blue?style=flat&logo=c%2B%2B)
 ![Status](https://img.shields.io/badge/Status-Работает_стабильно-brightgreen)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
