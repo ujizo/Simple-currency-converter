@@ -45,10 +45,7 @@ void resetColor() {
     std::cout << "\033[0m";
     #endif
 }
-
-// ============================================
 // АНИМАЦИЯ - ПРЫГАЮЩИЕ $
-// ============================================
 void convertAnimation(int duration_seconds = 2) {
     const int width = 50;
     const int height = 5;
