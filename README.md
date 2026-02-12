@@ -3,7 +3,7 @@
 **Простая, быстрая и надежная программа для конвертации валют на Windows. Никакой компиляции не требуется!**
 
 [![Версия](https://img.shields.io/badge/Версия-1.4-green)](https://github.com/ujizo/Simple-currency-converter/releases)
-[![Размер](https://img.shields.io/badge/Размер-3.5%20МБ-orange)]()
+
 
 ---
 
@@ -13,10 +13,11 @@
 
 **1. Скачайте готовый пакет:**
 ```
-📁 CurrencyConverter.zip (3.5 МБ)
+📁 final-converter1.4.zip (7.16 МБ)
+📁 final-converter1.4.rar (5.83 МБ)
 ```
-👉 **[⬇️ СКАЧАТЬ СЕЙЧАС](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.zip)**
-
+👉 **[⬇️ СКАЧАТЬ СЕЙЧАС ZIP](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.zip)**
+👉 **[⬇️ СКАЧАТЬ СЕЙЧАС RAR](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.rar)**
 **2. Распакуйте в любую папку**
 
 **3. Запустите `converter.exe` двойным щелчком** 🖱️🖱️
