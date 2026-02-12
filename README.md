@@ -160,42 +160,384 @@ pause
 
 ---
 
-## 🚀 **ДЛЯ РАЗРАБОТЧИКОВ**
+# 🔧 ПОЛНАЯ СБОРКА ИЗ ИСХОДНИКОВ С MSYS2
 
-### Сборка из исходников:
+**Пошаговая инструкция от установки до готового .exe**
+
+---
+
+## 📋 СОДЕРЖАНИЕ
+1. [Установка MSYS2](#1-установка-msys2)
+2. [Установка компилятора и библиотек](#2-установка-компилятора-и-библиотек)
+3. [Клонирование репозитория](#3-клонирование-репозитория)
+4. [Компиляция проекта](#4-компиляция-проекта)
+5. [Сборка всех DLL](#5-сборка-всех-dll)
+6. [Запуск программы](#6-запуск-программы)
+7. [Решение проблем](#7-решение-проблем)
+
+---
+
+## 1. УСТАНОВКА MSYS2
+
+### Шаг 1.1. Скачай MSYS2
+**Ссылка:** [https://www.msys2.org/](https://www.msys2.org/)
+
+**Прямая ссылка:**  
+👉 [msys2-x86_64-20250121.exe](https://github.com/msys2/msys2-installer/releases/download/2025-01-21/msys2-x86_64-20250121.exe)
+
+### Шаг 1.2. Установи MSYS2
+1. Запусти установщик
+2. Путь установки: **`C:\msys64`** (рекомендуется)
+3. Нажми "Далее" → "Установить"
+4. **ВАЖНО:** После установки **НЕ ЗАКРЫВАЙ** окно с галочкой "Run MSYS2 now"
+
+### Шаг 1.3. Первоначальное обновление
+В открывшемся окне **MSYS2 MSYS** выполни:
 
 ```bash
-# Клонируем репозиторий
-git clone https://github.com/ujizo/Simple-currency-converter.git
-cd Simple-currency-converter
-
-# Компилируем
-g++ -std=c++11 *.cpp -o converter.exe -lcurl
-
-# Копируем DLL
-cp /mingw64/bin/libcurl-4.dll \
-   /mingw64/bin/libgcc_s_seh-1.dll \
-   /mingw64/bin/libstdc++-6.dll \
-   /mingw64/bin/libwinpthread-1.dll \
-   /mingw64/bin/libbrotlidec.dll \
-   /mingw64/bin/libbrotlicommon.dll \
-   /mingw64/bin/libnghttp2-14.dll \
-   /mingw64/bin/libnghttp3-9.dll \
-   /mingw64/bin/libngtcp2-16.dll \
-   /mingw64/bin/libngtcp2_crypto_ossl-0.dll \
-   /mingw64/bin/libcares-2.dll \
-   /mingw64/bin/libidn2-0.dll \
-   /mingw64/bin/libunistring-5.dll \
-   /mingw64/bin/libpsl-5.dll \
-   /mingw64/bin/libssh2-1.dll \
-   /mingw64/bin/libzstd.dll \
-   /mingw64/bin/libssl-3-x64.dll \
-   /mingw64/bin/libcrypto-3-x64.dll \
-   /mingw64/bin/libintl-8.dll \
-   /mingw64/bin/libiconv-2.dll \
-   /mingw64/bin/zlib1.dll \
-   ./
+pacman -Syu
 ```
+
+**Что происходит:**
+- Обновление списка пакетов
+- Обновление системных компонентов
+
+**Когда спросит "Proceed with installation? [Y/n]"** → нажми **Y** + Enter
+
+**⚠️ ВАЖНО:** После этого терминал закроется. **Снова открой MSYS2 MSYS** из меню Пуск!
+
+### Шаг 1.4. Финальное обновление
+В новом окне выполни:
+
+```bash
+pacman -Su
+```
+
+Снова нажми **Y** + Enter
+
+---
+
+## 2. УСТАНОВКА КОМПИЛЯТОРА И БИБЛИОТЕК
+
+### ⚠️ **КРИТИЧЕСКИ ВАЖНО: ЗАПУСТИ НУЖНЫЙ ТЕРМИНАЛ!**
+
+**НЕ ИСПОЛЬЗУЙ MSYS2 MSYS!**  
+✅ **ЗАПУСТИ: MSYS2 MinGW 64-bit** (из меню Пуск)
+
+Проверь, что ты в правильном терминале:
+```bash
+echo $MSYSTEM
+```
+Должно вывести: **`MINGW64`**
+
+### Шаг 2.1. Установка компилятора GCC
+```bash
+pacman -S mingw-w64-x86_64-gcc
+```
+Нажми **Y** + Enter
+
+**Проверка:**
+```bash
+g++ --version
+```
+Должно быть: `g++ (Rev2, Built by MSYS2 project) 15.2.0`
+
+### Шаг 2.2. Установка CMake (опционально)
+```bash
+pacman -S mingw-w64-x86_64-cmake
+```
+
+### Шаг 2.3. Установка libcurl (для интернета)
+```bash
+pacman -S mingw-w64-x86_64-curl
+```
+
+### Шаг 2.4. Установка JSON библиотеки
+```bash
+pacman -S mingw-w64-x86_64-nlohmann-json
+```
+
+### Шаг 2.5. Установка дополнительных утилит
+```bash
+pacman -S mingw-w64-x86_64-make
+pacman -S mingw-w64-x86_64-git
+```
+
+### Шаг 2.6. Проверка всех установок
+```bash
+g++ --version
+curl --version
+make --version
+git --version
+```
+
+---
+
+## 3. КЛОНИРОВАНИЕ РЕПОЗИТОРИЯ
+
+### Шаг 3.1. Перейди в домашнюю папку
+```bash
+cd ~
+```
+
+### Шаг 3.2. Склонируй проект
+```bash
+git clone https://github.com/ujizo/Simple-currency-converter.git
+```
+
+### Шаг 3.3. Перейди в папку проекта
+```bash
+cd Simple-currency-converter
+```
+
+### Шаг 3.4. Проверь файлы
+```bash
+ls -la
+```
+
+Должно быть:
+```
+main.cpp
+converter.cpp
+converter.h
+api.cpp
+api.h
+cache.cpp
+cache.h
+utils.h
+README.md
+```
+
+---
+
+## 4. КОМПИЛЯЦИЯ ПРОЕКТА
+
+### 🔥 **ВАРИАНТ 4.1: БЫСТРАЯ КОМПИЛЯЦИЯ (РЕКОМЕНДУЕТСЯ)**
+
+```bash
+g++ -std=c++11 main.cpp converter.cpp api.cpp cache.cpp -o converter.exe -lcurl
+```
+
+**Если всё хорошо** → нет ошибок, создан `converter.exe`
+
+### 🔧 **ВАРИАНТ 4.2: ПОЛНАЯ СТАТИЧЕСКАЯ СБОРКА (БЕЗ DLL)**
+
+```bash
+g++ -std=c++11 *.cpp -o converter.exe -static -static-libgcc -static-libstdc++ -lws2_32 -lbcrypt -lwldap32 -lz -lcrypt32 -ladvapi32 -liphlpapi -lcurl
+```
+
+**Плюсы:** Один .exe файл, не нужны DLL  
+**Минусы:** Размер ~3 МБ
+
+### 🚀 **ВАРИАНТ 4.3: ДИНАМИЧЕСКАЯ СБОРКА (С DLL)**
+
+```bash
+g++ -std=c++11 *.cpp -o converter.exe -lcurl
+```
+
+**Плюсы:** Маленький .exe (200 КБ)  
+**Минусы:** Нужны DLL
+
+---
+
+## 5. СБОРКА ВСЕХ DLL
+
+### 📦 **ПОЛНЫЙ НАБОР DLL (23 ФАЙЛА)**
+
+Скопируй эту команду **ЦЕЛИКОМ**:
+
+```bash
+# Создаем папку для DLL
+mkdir -p dlls
+
+# Копируем все необходимые DLL
+cp /mingw64/bin/libcurl-4.dll ./dlls/
+cp /mingw64/bin/libgcc_s_seh-1.dll ./dlls/
+cp /mingw64/bin/libstdc++-6.dll ./dlls/
+cp /mingw64/bin/libwinpthread-1.dll ./dlls/
+cp /mingw64/bin/libbrotlidec.dll ./dlls/
+cp /mingw64/bin/libbrotlicommon.dll ./dlls/
+cp /mingw64/bin/libnghttp2-14.dll ./dlls/
+cp /mingw64/bin/libnghttp3-9.dll ./dlls/
+cp /mingw64/bin/libngtcp2-16.dll ./dlls/
+cp /mingw64/bin/libngtcp2_crypto_ossl-0.dll ./dlls/
+cp /mingw64/bin/libcares-2.dll ./dlls/
+cp /mingw64/bin/libidn2-0.dll ./dlls/
+cp /mingw64/bin/libunistring-5.dll ./dlls/
+cp /mingw64/bin/libpsl-5.dll ./dlls/
+cp /mingw64/bin/libssh2-1.dll ./dlls/
+cp /mingw64/bin/libzstd.dll ./dlls/
+cp /mingw64/bin/libssl-3-x64.dll ./dlls/
+cp /mingw64/bin/libcrypto-3-x64.dll ./dlls/
+cp /mingw64/bin/libintl-8.dll ./dlls/
+cp /mingw64/bin/libiconv-2.dll ./dlls/
+cp /mingw64/bin/zlib1.dll ./dlls/
+
+# Копируем сам exe в папку с DLL
+cp converter.exe ./dlls/
+
+# Переходим в папку с DLL
+cd dlls
+
+# Проверяем файлы
+ls -la
+```
+
+### 🎯 **МИНИМАЛЬНЫЙ НАБОР DLL (ЕСЛИ МАЛО МЕСТА)**
+
+```bash
+# Только самое необходимое
+cp /mingw64/bin/libcurl-4.dll ./
+cp /mingw64/bin/libgcc_s_seh-1.dll ./
+cp /mingw64/bin/libstdc++-6.dll ./
+cp /mingw64/bin/libwinpthread-1.dll ./
+cp /mingw64/bin/libnghttp2-14.dll ./
+```
+
+---
+
+## 6. ЗАПУСК ПРОГРАММЫ
+
+### ✅ **СПОСОБ 6.1: ЗАПУСК ИЗ MSYS2**
+```bash
+./converter.exe
+```
+
+### ✅ **СПОСОБ 6.2: ЗАПУСК ИЗ ПАПКИ С DLL**
+```bash
+cd dlls
+./converter.exe
+```
+
+### ✅ **СПОСОБ 6.3: ЗАПУСК ДВОЙНЫМ КЛИКОМ (WINDOWS)**
+1. Открой папку `dlls` в проводнике Windows
+2. Дважды кликни по `converter.exe`
+
+### ✅ **СПОСОБ 6.4: СОЗДАНИЕ START.BAT (НЕ ЗАКРЫВАЕТСЯ)**
+
+Создай файл `start.bat` в папке с программой:
+
+```bash
+echo @echo off > start.bat
+echo converter.exe >> start.bat
+echo pause >> start.bat
+```
+
+Запускай двойным кликом по `start.bat`
+
+---
+
+## 7. РЕШЕНИЕ ПРОБЛЕМ
+
+### ❌ **ОШИБКА: g++: command not found**
+**Причина:** Запущен не тот терминал  
+**Решение:** Запусти **MSYS2 MinGW 64-bit**
+
+### ❌ **ОШИБКА: libcurl-4.dll not found**
+**Причина:** Не скопированы DLL  
+**Решение:** 
+```bash
+cp /mingw64/bin/libcurl-4.dll ./
+```
+
+### ❌ **ОШИБКА: undefined reference to `curl_easy_init`**
+**Причина:** Не установлен libcurl  
+**Решение:**
+```bash
+pacman -S mingw-w64-x86_64-curl
+```
+
+### ❌ **ОШИБКА: nlohmann/json.hpp: No such file**
+**Причина:** Не установлена JSON библиотека  
+**Решение:**
+```bash
+pacman -S mingw-w64-x86_64-nlohmann-json
+```
+
+### ❌ **ОШИБКА: Permission denied**
+**Причина:** Программа уже запущена  
+**Решение:**
+```bash
+taskkill /f /im converter.exe
+```
+
+### ❌ **ОШИБКА: CURL error: SSL CA cert**
+**Решение:** Отключи проверку SSL в коде:
+```cpp
+curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+```
+
+---
+
+## 📦 ГОТОВЫЙ СКРИПТ АВТОМАТИЧЕСКОЙ СБОРКИ
+
+Создай файл **`build_full.bat`** в папке с проектом:
+
+```bash
+@echo off
+echo ========================================
+echo    СБОРКА КОНВЕРТЕРА ВАЛЮТ MSYS2
+echo ========================================
+echo.
+
+echo [1/6] Проверка компилятора...
+g++ --version || (echo Ошибка: g++ не найден! & pause & exit)
+
+echo [2/6] Компиляция программы...
+g++ -std=c++11 main.cpp converter.cpp api.cpp cache.cpp -o converter.exe -lcurl
+
+echo [3/6] Создание папки для DLL...
+mkdir dlls 2>nul
+
+echo [4/6] Копирование DLL...
+copy C:\msys64\mingw64\bin\libcurl-4.dll dlls\
+copy C:\msys64\mingw64\bin\libgcc_s_seh-1.dll dlls\
+copy C:\msys64\mingw64\bin\libstdc++-6.dll dlls\
+copy C:\msys64\mingw64\bin\libwinpthread-1.dll dlls\
+copy C:\msys64\mingw64\bin\libbrotlidec.dll dlls\
+copy C:\msys64\mingw64\bin\libbrotlicommon.dll dlls\
+copy C:\msys64\mingw64\bin\libnghttp2-14.dll dlls\
+copy C:\msys64\mingw64\bin\libnghttp3-9.dll dlls\
+copy C:\msys64\mingw64\bin\libngtcp2-16.dll dlls\
+copy C:\msys64\mingw64\bin\libngtcp2_crypto_ossl-0.dll dlls\
+copy C:\msys64\mingw64\bin\libcares-2.dll dlls\
+copy C:\msys64\mingw64\bin\libidn2-0.dll dlls\
+copy C:\msys64\mingw64\bin\libunistring-5.dll dlls\
+copy C:\msys64\mingw64\bin\libpsl-5.dll dlls\
+copy C:\msys64\mingw64\bin\libssh2-1.dll dlls\
+copy C:\msys64\mingw64\bin\libzstd.dll dlls\
+copy C:\msys64\mingw64\bin\libssl-3-x64.dll dlls\
+copy C:\msys64\mingw64\bin\libcrypto-3-x64.dll dlls\
+copy C:\msys64\mingw64\bin\libintl-8.dll dlls\
+copy C:\msys64\mingw64\bin\libiconv-2.dll dlls\
+copy C:\msys64\mingw64\bin\zlib1.dll dlls\
+
+echo [5/6] Копирование программы...
+copy converter.exe dlls\
+
+echo [6/6] Создание ярлыка для запуска...
+echo @echo off > dlls\start.bat
+echo converter.exe >> dlls\start.bat
+echo pause >> dlls\start.bat
+
+echo.
+echo ========================================
+echo    ✅ СБОРКА ЗАВЕРШЕНА УСПЕШНО!
+echo ========================================
+echo.
+echo 📁 Готовая программа в папке: dlls\
+echo 🚀 Запуск: dlls\start.bat
+echo.
+pause
+```
+
+**Запусти этот .bat файл ДВОЙНЫМ КЛИКОМ!** 🔥
+
+---
+
+*Инструкция составлена 12 февраля 2026*  
+*Проверено на Windows 10/11 + MSYS2 MinGW 64-bit*
 
 **Зависимости:**
 - C++11 компилятор
