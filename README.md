@@ -45,8 +45,8 @@
 
 | Формат | Размер | Ссылка |
 |--------|--------|--------|
-| ZIP | 7.16 МБ | [final-converter1.4.zip](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.zip) |
-| RAR | 5.83 МБ | [final-converter1.4.rar](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.rar) |
+| ZIP | 7.18 МБ | [final-converter1.4.zip](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/converter1.4.zip) |
+| RAR | 5.84 МБ | [final-converter1.4.rar](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/converter1.4.rar) |
 
 **Шаг 2.** Извлеките содержимое архива в выбранный каталог.
 
@@ -75,7 +75,7 @@
 
 ## 🌍 Поддерживаемые валюты
 
-Приложение поддерживает 182 валюты, включая все основные мировые валюты. Ниже представлен перечень наиболее востребованных:
+Приложение поддерживает 158 валюты, включая все основные мировые валюты. Ниже представлен перечень наиболее востребованных:
 
 | Код ISO | Наименование валюты |
 |---------|---------------------|
