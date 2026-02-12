@@ -29,30 +29,30 @@ double Api::getRate(const std::string& from, const std::string& to) {
         curl_easy_cleanup(curl);
         
         if(res != CURLE_OK) {
-            std::cerr << "Ошибка подключения: " << curl_easy_strerror(res) << std::endl;
+            std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
             return 0.0;
         }
     }
-    
+
     try {
         auto json = nlohmann::json::parse(response);
-        
+
         if (!json["rates"].contains(from)) {
-            std::cerr << "Валюта " << from << " не найдена!" << std::endl;
+            std::cerr << "Currency " << from << " not found!" << std::endl;
             return 0.0;
         }
         if (!json["rates"].contains(to)) {
-            std::cerr << "Валюта " << to << " не найдена!" << std::endl;
+            std::cerr << "Currency " << to << " not found!" << std::endl;
             return 0.0;
         }
-        
+
         double rateFrom = json["rates"][from];
         double rateTo = json["rates"][to];
-        
+
         return rateTo / rateFrom;
-        
+
     } catch(const std::exception& e) {
-        std::cerr << "Ошибка обработки данных: " << e.what() << std::endl;
+        std::cerr << "JSON error: " << e.what() << std::endl;
         return 0.0;
     }
 }
