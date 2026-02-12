@@ -216,7 +216,8 @@ g++ -std=c++11 *.cpp -o converter.exe -static -static-libgcc -static-libstdc++ -
 ```
 
 ### Формирование дистрибутива
-
+Для создания полного дистрибутива с динамическими библиотеками выполните:
+```
 # Создание каталога
 mkdir -p release
 
@@ -245,6 +246,7 @@ cp /mingw64/bin/libcrypto-3-x64.dll release/
 cp /mingw64/bin/libintl-8.dll release/
 cp /mingw64/bin/libiconv-2.dll release/
 cp /mingw64/bin/zlib1.dll release/
+```
 ---
 
 ## ❓ Часто задаваемые вопросы
