@@ -214,6 +214,10 @@ g++ -std=c++11 main.cpp converter.cpp api.cpp cache.cpp -o converter.exe -lcurl
 ```bash
 g++ -std=c++11 *.cpp -o converter.exe -static -static-libgcc -static-libstdc++ -lws2_32 -lbcrypt -lwldap32 -lz -lcrypt32 -ladvapi32 -liphlpapi -lcurl
 ```
+**4. Если ошибка комплияции:**
+```bash
+g++ -std=c++11 *.cpp -o converter.exe -lcurl
+```
 
 ### Формирование дистрибутива
 Для создания полного дистрибутива с динамическими библиотеками выполните:
