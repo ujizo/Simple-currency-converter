@@ -2,7 +2,10 @@
 #include <string>
 #include <cctype>
 #include <algorithm>
+#include <windows.h>
 #include "converter.h"
+
+#pragma execution_character_set("utf-8")
 
 // Функция для преобразования строки в верхний регистр
 std::string toUpper(const std::string& str) {
@@ -15,7 +18,7 @@ std::string toUpper(const std::string& str) {
 bool isValidCurrencyCode(const std::string& str) {
     if (str.empty() || str.length() > 3) return false;
     for (char c : str) {
-        if (!std::isalpha(c)) return false;  // только буквы!
+        if (!std::isalpha(c)) return false;
     }
     return true;
 }
@@ -29,53 +32,57 @@ bool isValidAmount(const std::string& str) {
             dots++;
             if (dots > 1) return false;
         } else if (!std::isdigit(c)) {
-            return false;  // только цифры и одна точка!
+            return false;
         }
     }
     return true;
 }
 
 int main() {
+    // ВКЛЮЧАЕМ РУССКУЮ КОДИРОВКУ В КОНСОЛИ
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
+    
     Converter converter;
     std::string from, to, amountStr;
     double amount;
     
-    std::cout << "=== 💱 Simple Currency Converter ===\n";
+    std::cout << "=== 💱 ПРОСТОЙ КОНВЕРТЕР ВАЛЮТ ===\n";
     std::cout << "Поддерживаемые валюты: USD, EUR, RUB, GBP, JPY, CNY и другие\n";
     std::cout << "====================================\n\n";
     
     while (true) {
         // Ввод исходной валюты с проверкой
         while (true) {
-            std::cout << "From (USD/EUR/RUB etc): ";
+            std::cout << "Из (USD/EUR/RUB и т.д.): ";
             std::cin >> from;
             from = toUpper(from);
             
             if (isValidCurrencyCode(from)) {
                 break;
             } else {
-                std::cout << "❌ Ошибка: '" << from << "' - это не код валюты!\n";
+                std::cout << "❌ ОШИБКА: '" << from << "' - это не код валюты!\n";
                 std::cout << "   Введите 3 буквы, например: USD, EUR, RUB\n\n";
             }
         }
         
         // Ввод целевой валюты с проверкой
         while (true) {
-            std::cout << "To (USD/EUR/RUB etc): ";
+            std::cout << "В (USD/EUR/RUB и т.д.): ";
             std::cin >> to;
             to = toUpper(to);
             
             if (isValidCurrencyCode(to)) {
                 break;
             } else {
-                std::cout << "❌ Ошибка: '" << to << "' - это не код валюты!\n";
+                std::cout << "❌ ОШИБКА: '" << to << "' - это не код валюты!\n";
                 std::cout << "   Введите 3 буквы, например: USD, EUR, RUB\n\n";
             }
         }
         
         // Ввод суммы с проверкой
         while (true) {
-            std::cout << "Amount: ";
+            std::cout << "Сумма: ";
             std::cin >> amountStr;
             
             if (isValidAmount(amountStr)) {
@@ -83,10 +90,10 @@ int main() {
                 if (amount > 0) {
                     break;
                 } else {
-                    std::cout << "❌ Ошибка: сумма должна быть больше 0!\n\n";
+                    std::cout << "❌ ОШИБКА: сумма должна быть больше 0!\n\n";
                 }
             } else {
-                std::cout << "❌ Ошибка: '" << amountStr << "' - это не число!\n";
+                std::cout << "❌ ОШИБКА: '" << amountStr << "' - это не число!\n";
                 std::cout << "   Введите число, например: 100, 50.5, 1000\n\n";
             }
         }
@@ -96,18 +103,18 @@ int main() {
         double result = converter.convert(amount, from, to);
         
         if (result > 0) {
-            std::cout << "✅ " << amount << " " << from << " = " << result << " " << to << "\n\n";
+            std::cout << "✅ РЕЗУЛЬТАТ: " << amount << " " << from << " = " << result << " " << to << "\n\n";
         } else {
-            std::cout << "❌ Не удалось конвертировать. Проверьте:\n";
-            std::cout << "   - Интернет подключен?\n";
-            std::cout << "   - Валюты существуют? (USD, EUR, RUB...)\n\n";
+            std::cout << "❌ Ошибка конвертации. Проверьте:\n";
+            std::cout << "   - Подключение к интернету\n";
+            std::cout << "   - Коды валют (USD, EUR, RUB...)\n\n";
         }
         
         // Продолжить?
-        std::cout << "Конвертировать ещё? (y/n): ";
+        std::cout << "Конвертировать ещё? (д/н): ";
         char again;
         std::cin >> again;
-        if (again != 'y' && again != 'Y') {
+        if (again != 'д' && again != 'Д' && again != 'y' && again != 'Y') {
             std::cout << "\n👋 До свидания!\n";
             break;
         }
