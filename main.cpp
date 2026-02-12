@@ -29,6 +29,6 @@ int main() {
     } else {
         std::cout << "Conversion failed!" << std::endl;
     }
-    
+    system("pause");
     return 0;
 }
