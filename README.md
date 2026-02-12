@@ -217,40 +217,34 @@ g++ -std=c++11 *.cpp -o converter.exe -static -static-libgcc -static-libstdc++ -
 
 ### Формирование дистрибутива
 
-Для создания полного дистрибутива с динамическими библиотеками выполните:
-
-```bash
 # Создание каталога
 mkdir -p release
 
 # Копирование исполняемого файла
 cp converter.exe release/
 
-# Копирование зависимостей
-cp /mingw64/bin/libcurl-4.dll ./dlls/
-cp /mingw64/bin/libgcc_s_seh-1.dll ./dlls/
-cp /mingw64/bin/libstdc++-6.dll ./dlls/
-cp /mingw64/bin/libwinpthread-1.dll ./dlls/
-cp /mingw64/bin/libbrotlidec.dll ./dlls/
-cp /mingw64/bin/libbrotlicommon.dll ./dlls/
-cp /mingw64/bin/libnghttp2-14.dll ./dlls/
-cp /mingw64/bin/libnghttp3-9.dll ./dlls/
-cp /mingw64/bin/libngtcp2-16.dll ./dlls/
-cp /mingw64/bin/libngtcp2_crypto_ossl-0.dll ./dlls/
-cp /mingw64/bin/libcares-2.dll ./dlls/
-cp /mingw64/bin/libidn2-0.dll ./dlls/
-cp /mingw64/bin/libunistring-5.dll ./dlls/
-cp /mingw64/bin/libpsl-5.dll ./dlls/
-cp /mingw64/bin/libssh2-1.dll ./dlls/
-cp /mingw64/bin/libzstd.dll ./dlls/
-cp /mingw64/bin/libssl-3-x64.dll ./dlls/
-cp /mingw64/bin/libcrypto-3-x64.dll ./dlls/
-cp /mingw64/bin/libintl-8.dll ./dlls/
-cp /mingw64/bin/libiconv-2.dll ./dlls/
-cp /mingw64/bin/zlib1.dll ./dlls/
-
-```
-
+# Копирование зависимостей В ТУ ЖЕ ПАПКУ
+cp /mingw64/bin/libcurl-4.dll release/
+cp /mingw64/bin/libgcc_s_seh-1.dll release/
+cp /mingw64/bin/libstdc++-6.dll release/
+cp /mingw64/bin/libwinpthread-1.dll release/
+cp /mingw64/bin/libbrotlidec.dll release/
+cp /mingw64/bin/libbrotlicommon.dll release/
+cp /mingw64/bin/libnghttp2-14.dll release/
+cp /mingw64/bin/libnghttp3-9.dll release/
+cp /mingw64/bin/libngtcp2-16.dll release/
+cp /mingw64/bin/libngtcp2_crypto_ossl-0.dll release/
+cp /mingw64/bin/libcares-2.dll release/
+cp /mingw64/bin/libidn2-0.dll release/
+cp /mingw64/bin/libunistring-5.dll release/
+cp /mingw64/bin/libpsl-5.dll release/
+cp /mingw64/bin/libssh2-1.dll release/
+cp /mingw64/bin/libzstd.dll release/
+cp /mingw64/bin/libssl-3-x64.dll release/
+cp /mingw64/bin/libcrypto-3-x64.dll release/
+cp /mingw64/bin/libintl-8.dll release/
+cp /mingw64/bin/libiconv-2.dll release/
+cp /mingw64/bin/zlib1.dll release/
 ---
 
 ## ❓ Часто задаваемые вопросы
