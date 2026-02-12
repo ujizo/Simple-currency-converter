@@ -6,7 +6,7 @@
 class Api {
 public:
     double getRate(const std::string& from, const std::string& to);
-    std::string fetchExchangeRates(); 
+    std::string fetchExchangeRates();
 };
 
 #endif
