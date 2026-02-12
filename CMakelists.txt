@@ -3,10 +3,10 @@ project(SimpleCurrencyConverter)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Ищем библиотеку Curl
+
 find_package(CURL REQUIRED)
 
-# Добавляем исполняемый файл
+
 add_executable(SimpleCurrencyConverter
     main.cpp
     converter.cpp
@@ -14,6 +14,6 @@ add_executable(SimpleCurrencyConverter
     cache.cpp
 )
 
-# Линкуем с Curl
+
 target_link_libraries(SimpleCurrencyConverter PRIVATE ${CURL_LIBRARIES})
 target_include_directories(SimpleCurrencyConverter PRIVATE ${CURL_INCLUDE_DIRS})
