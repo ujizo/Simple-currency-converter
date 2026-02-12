@@ -2,7 +2,6 @@
 
 **Простая, быстрая и надежная программа для конвертации валют на Windows. Никакой компиляции не требуется!**
 
-[![Скачать](https://img.shields.io/badge/📥-Скачать%20программу-blue)]([https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/CurrencyConverter.zip](https://github.com/ujizo/Simple-currency-converter/releases/tag/converterfinal))
 [![Версия](https://img.shields.io/badge/Версия-1.4-green)](https://github.com/ujizo/Simple-currency-converter/releases)
 [![Размер](https://img.shields.io/badge/Размер-3.5%20МБ-orange)]()
 
@@ -16,21 +15,13 @@
 ```
 📁 CurrencyConverter.zip (3.5 МБ)
 ```
-👉 **[⬇️ СКАЧАТЬ СЕЙЧАС](https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/CurrencyConverter.zip)**
+👉 **[⬇️ СКАЧАТЬ СЕЙЧАС](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.zip)**
 
 **2. Распакуйте в любую папку**
 
 **3. Запустите `converter.exe` двойным щелчком** 🖱️🖱️
 
 **✅ ГОТОВО! Никакой установки, компиляции и проблем с DLL!**
-
----
-
-### 🔧 **ВАРИАНТ 2: СКАЧАТЬ ТОЛЬКО EXE**
-
-Если DLL уже есть:
-
-👉 **[⬇️ converter.exe (250 КБ)](https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/converter_english.exe)**
 
 ---
 
@@ -182,7 +173,28 @@ cd Simple-currency-converter
 g++ -std=c++11 *.cpp -o converter.exe -lcurl
 
 # Копируем DLL
-cp /mingw64/bin/libcurl-4.dll ./
+cp /mingw64/bin/libcurl-4.dll \
+   /mingw64/bin/libgcc_s_seh-1.dll \
+   /mingw64/bin/libstdc++-6.dll \
+   /mingw64/bin/libwinpthread-1.dll \
+   /mingw64/bin/libbrotlidec.dll \
+   /mingw64/bin/libbrotlicommon.dll \
+   /mingw64/bin/libnghttp2-14.dll \
+   /mingw64/bin/libnghttp3-9.dll \
+   /mingw64/bin/libngtcp2-16.dll \
+   /mingw64/bin/libngtcp2_crypto_ossl-0.dll \
+   /mingw64/bin/libcares-2.dll \
+   /mingw64/bin/libidn2-0.dll \
+   /mingw64/bin/libunistring-5.dll \
+   /mingw64/bin/libpsl-5.dll \
+   /mingw64/bin/libssh2-1.dll \
+   /mingw64/bin/libzstd.dll \
+   /mingw64/bin/libssl-3-x64.dll \
+   /mingw64/bin/libcrypto-3-x64.dll \
+   /mingw64/bin/libintl-8.dll \
+   /mingw64/bin/libiconv-2.dll \
+   /mingw64/bin/zlib1.dll \
+   ./
 ```
 
 **Зависимости:**
@@ -196,8 +208,7 @@ cp /mingw64/bin/libcurl-4.dll ./
 
 | Файл | Размер | Ссылка |
 |------|--------|--------|
-| **📦 Полный архив (все DLL)** | 3.5 МБ | [⬇️ Скачать](https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/CurrencyConverter.zip) |
-| **🖥️ Только exe** | 250 КБ | [⬇️ Скачать](https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/converter_english.exe) |
+| **📦 Полный архив (все DLL)** | 3.5 МБ | [⬇️ Скачать](https://github.com/ujizo/Simple-currency-converter/releases/download/converterfinal/final-converter1.4.zip) |
 | **📁 Исходный код** | - | [⬇️ Скачать](https://github.com/ujizo/Simple-currency-converter/archive/refs/heads/main.zip) |
 
 ---
