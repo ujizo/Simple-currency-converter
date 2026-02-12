@@ -9,7 +9,7 @@ class Converter {
 private:
     Api api;
     std::map<std::string, double> cache;
-
+    
 public:
     Converter();
     ~Converter();
