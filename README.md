@@ -2,7 +2,7 @@
 
 **Простая, быстрая и надежная программа для конвертации валют на Windows. Никакой компиляции не требуется!**
 
-[![Скачать](https://img.shields.io/badge/📥-Скачать%20программу-blue)](https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/CurrencyConverter.zip)
+[![Скачать](https://img.shields.io/badge/📥-Скачать%20программу-blue)]([https://github.com/ujizo/Simple-currency-converter/releases/download/v1.4/CurrencyConverter.zip](https://github.com/ujizo/Simple-currency-converter/releases/tag/converterfinal))
 [![Версия](https://img.shields.io/badge/Версия-1.4-green)](https://github.com/ujizo/Simple-currency-converter/releases)
 [![Размер](https://img.shields.io/badge/Размер-3.5%20МБ-orange)]()
 
